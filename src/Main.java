@@ -26,9 +26,9 @@ public class Main {
         field[21][51] = true;
         while(true){
             display();
+            Thread.sleep(100);
             calcStates();
             setField();
-            Thread.sleep(100);
         }
     }
     private void calcStates(){
