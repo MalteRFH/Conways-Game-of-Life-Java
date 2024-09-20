@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class Main {
     boolean[][] field, tempField;
@@ -9,24 +11,30 @@ public class Main {
         for(boolean[] booleans : field){
             Arrays.fill(booleans, false);
         }
-        field[17][49] = true;
-        field[17][50] = true;
-        field[17][51] = true;
-        field[18][49] = true;
-        field[18][51] = true;
-        field[19][49] = true;
-        field[19][51] = true;
-
-        field[23][49] = true;
-        field[23][50] = true;
-        field[23][51] = true;
-        field[22][49] = true;
-        field[22][51] = true;
-        field[21][49] = true;
-        field[21][51] = true;
+//        field[17][49] = true;
+//        field[17][50] = true;
+//        field[17][51] = true;
+//        field[18][49] = true;
+//        field[18][51] = true;
+//        field[19][49] = true;
+//        field[19][51] = true;
+//
+//        field[23][49] = true;
+//        field[23][50] = true;
+//        field[23][51] = true;
+//        field[22][49] = true;
+//        field[22][51] = true;
+//        field[21][49] = true;
+//        field[21][51] = true;
+        Random random = new Random();
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+                field[i][j] = random.nextBoolean();
+            }
+        }
         while(true){
             display();
-            Thread.sleep(100);
+            Thread.sleep(300);
             calcStates();
             setField();
         }
