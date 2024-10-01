@@ -57,7 +57,7 @@ public class GameOfLifeGUI extends JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.addChoosableFileFilter(restrict);
 
-        startButton.addActionListener(e -> {
+        startButton.addActionListener(evt -> {
             isRunning = !isRunning;
             startButton.setText(isRunning() ? "Stop" : "Start");
         });
