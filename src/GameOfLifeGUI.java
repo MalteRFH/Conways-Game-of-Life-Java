@@ -31,17 +31,32 @@ public class GameOfLifeGUI extends JFrame {
         dPanel = new DPanel();
         add(dPanel, BorderLayout.CENTER);
         initButtons();
-        dPanel.addMouseListener(new MouseAdapter() {
+        MouseAdapter handler = new MouseAdapter() {
+            boolean changeToo = false;
             @Override
             public void mousePressed(MouseEvent evt) {
                 int x = evt.getX() / pixelSize;
                 int y = evt.getY() / pixelSize;
+                changeToo = !cells[x][y];
+                changePixel(evt);
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent evt) {
+                changePixel(evt);
+            }
+
+            private void changePixel(MouseEvent evt){
+                int x = evt.getX() / pixelSize;
+                int y = evt.getY() / pixelSize;
                 if (x >= 0 && x < pixelNumber && y >= 0 && y < pixelNumber) {
-                    cells[x][y] = !cells[x][y];
+                    cells[x][y] = changeToo;
                     dPanel.repaint();
                 }
             }
-        });
+        };
+        dPanel.addMouseListener(handler);
+        dPanel.addMouseMotionListener(handler);
     }
 
     private void initButtons() {
