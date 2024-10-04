@@ -15,11 +15,7 @@ public class Main {
 
     private static void runGame(){
         Timer timer = new Timer(100, e -> {
-            if (gui.isRunning()) {
-                logic.setCells(gui.getCells());
-                logic.updateCells();
-                gui.setCells(logic.getCells());
-            } else if (gui.getStep()){
+            if (gui.isRunning() || gui.getStep()) {
                 logic.setCells(gui.getCells());
                 logic.updateCells();
                 gui.setCells(logic.getCells());
